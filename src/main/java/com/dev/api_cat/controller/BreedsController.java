@@ -6,18 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.dev.api_cat.dto.CatBreedFullDataDto;
 import com.dev.api_cat.dto.ResponseDto;
 import com.dev.api_cat.persistence.models.CatBreedModel;
 import com.dev.api_cat.service.IApiCat;
 
-@Controller
+@RestController
 public class BreedsController {
 
     @Autowired
@@ -55,12 +55,9 @@ public class BreedsController {
     }
 
     @GetMapping("/api/breeds")
-    // public ResponseEntity<List<CatBreedModel>> listBreeds() {
-    public String listBreeds() {
-        // return new ResponseEntity<List<CatBreedModel>>(apiCatService.listAll(), HttpStatus.OK);
-        return "listBreeds";
+    public ResponseEntity<List<CatBreedModel>> listBreeds() {
+        return new ResponseEntity<List<CatBreedModel>>(apiCatService.listAll(), HttpStatus.OK);
     }
-
 
     @PostMapping("/api/breeds")
     public ResponseEntity<ResponseDto> updateDataBase() {
