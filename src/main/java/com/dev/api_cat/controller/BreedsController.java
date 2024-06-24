@@ -1,5 +1,6 @@
 package com.dev.api_cat.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class BreedsController {
 
     @GetMapping("/search")
     public ResponseEntity<List<CatBreedModel>> search(@RequestParam String value, @RequestParam(defaultValue = "10") int limit) {
+        if (value.length() < 3) {
+            return ResponseEntity.ok(new ArrayList<>());
+        }
         List<CatBreedModel> results = apiCatService.searchByAnyField(value, limit);
         return ResponseEntity.ok(results);
     }
