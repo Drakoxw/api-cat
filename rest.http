@@ -1,26 +1,26 @@
-#####################
-### LISTAR LAS RAZAS
+########################
+### LISTAR LAS RAZAS ###
 
 GET http://localhost:8080/api/breeds HTTP/1.1
 Accept: application/json
 
 
-########################
-### DETALLE DE UNA RAZAS
+############################
+### DETALLE DE UNA RAZAS ###
 
 GET http://localhost:8080/api/breeds/breed-id/{UUID} HTTP/1.1
 Accept: application/json
 
 
-#######################################
-### BUSQUEDA POR CAULQUIER COINCIDENCIA
+###########################################
+### BUSQUEDA POR CAULQUIER COINCIDENCIA ###
 
 GET http://localhost:8080/api/breeds/search?value={query-value}&limit=10 HTTP/1.1
 Accept: application/json
 
 
-###########################################
-### RESETEAR LOS DATOS Y VOLVERLOS A CARGAR
+###############################################
+### RESETEAR LOS DATOS Y VOLVERLOS A CARGAR ###
 
 POST http://localhost:8080/api/breeds HTTP/1.1
 Accept: application/json

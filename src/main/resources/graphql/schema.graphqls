@@ -1,0 +1,51 @@
+type Query {
+    getBreedList: [BreedsListResponse]
+    searchBreedList(query: String, limit: String): [BreedsListResponse]
+    getBreedDetail(uuid: String): BreedDetailResponse
+}
+
+type Mutation {
+    resetDataBase: Response
+}
+
+type BreedsListResponse {
+  uuid: String
+  externalid: String
+  name: String
+  origin: String
+  description: String
+  altNames: String
+  lifeSpan: String
+  referenceImageId: String
+}
+
+type Breed {
+  uuid: String
+  externalid: String
+  name: String
+  origin: String
+  description: String
+  altNames: String
+  lifeSpan: String
+  referenceImageId: String
+}
+
+type BreedDetailResponse {
+  id: String
+  url: String
+  temperament: String
+  adaptability: Int
+  childFriendly: Int
+  dogFriendly: Int
+  energyLevel: Int
+  intelligence: Int
+  strangerFriendly: Int
+  socialNeeds: Int
+  wikipediaUrl: String
+  breed: Breed
+}
+
+type Response {
+    message: String
+    success: Boolean
+}
