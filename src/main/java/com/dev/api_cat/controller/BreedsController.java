@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,13 +18,12 @@ import com.dev.api_cat.persistence.models.CatBreedModel;
 import com.dev.api_cat.service.IApiCat;
 
 @RestController
-@RequestMapping("/api/breeds")
 public class BreedsController {
 
     @Autowired
     private IApiCat apiCatService;
 
-    @GetMapping("/search")
+    @GetMapping("/api/breeds/search")
     public ResponseEntity<List<CatBreedModel>> search(@RequestParam String value, @RequestParam(defaultValue = "10") int limit) {
         if (value.length() < 3) {
             return ResponseEntity.ok(new ArrayList<>());
@@ -34,8 +32,7 @@ public class BreedsController {
         return ResponseEntity.ok(results);
     }
 
-
-    @GetMapping("/breed-id/{uuid}")
+    @GetMapping("/api/breeds/breed-id/{uuid}")
     public ResponseEntity<?> getBreedData(@PathVariable String uuid) {
         ResponseDto response = new ResponseDto();
         response.setSuccess(false);
@@ -57,13 +54,13 @@ public class BreedsController {
         
     }
 
-    @GetMapping
+    @GetMapping("/api/breeds")
     public ResponseEntity<List<CatBreedModel>> listBreeds() {
         return new ResponseEntity<List<CatBreedModel>>(apiCatService.listAll(), HttpStatus.OK);
     }
 
 
-    @PostMapping
+    @PostMapping("/api/breeds")
     public ResponseEntity<ResponseDto> updateDataBase() {
         ResponseDto response = new ResponseDto();
         response.setMessage("Iniciando");
