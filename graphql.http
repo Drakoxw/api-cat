@@ -1,0 +1,57 @@
+########################
+### LISTAR LAS RAZAS ###
+
+POST http://localhost:8080/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+{
+	breeds: getBreedList {
+		uuid,name,origin
+	}
+}
+
+
+
+############################
+### DETALLE DE UNA RAZAS ###
+
+POST http://localhost:8080/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+{
+	breed: getBreedDetail(uuid: "b65374fa-5cf2-41f2-9a4a-419b2ad5f8d0") {
+		id,
+		url,
+		breed {
+			name,
+			description
+		}
+	}
+}
+
+
+###########################################
+### BUSQUEDA POR CAULQUIER COINCIDENCIA ###
+
+POST http://localhost:8080/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+{
+	breeds: searchBreedList(query: "United", limit: "3")
+	{
+		uuid,name,origin
+	}
+}
+
+
+###############################################
+### RESETEAR LOS DATOS Y VOLVERLOS A CARGAR ###
+
+POST http://localhost:8080/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+mutation {
+	resetDataBase {
+		message
+	}
+}
