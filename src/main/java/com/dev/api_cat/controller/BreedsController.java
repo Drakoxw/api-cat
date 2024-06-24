@@ -55,8 +55,10 @@ public class BreedsController {
     }
 
     @GetMapping("/api/breeds")
-    public ResponseEntity<List<CatBreedModel>> listBreeds() {
-        return new ResponseEntity<List<CatBreedModel>>(apiCatService.listAll(), HttpStatus.OK);
+    // public ResponseEntity<List<CatBreedModel>> listBreeds() {
+    public String listBreeds() {
+        // return new ResponseEntity<List<CatBreedModel>>(apiCatService.listAll(), HttpStatus.OK);
+        return "listBreeds";
     }
 
 
