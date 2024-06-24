@@ -25,8 +25,16 @@ public class InitController {
     }
 
     @GetMapping("/breeds")
-    public ResponseEntity<List<CatBreedModel>> listBreeds() {
-        return new ResponseEntity<List<CatBreedModel>>(apiCatService.listAll(), HttpStatus.OK);
+    public ResponseEntity<CatBreedModel> listBreeds() {
+        CatBreedModel data = new CatBreedModel();
+        data.setAltNames("");
+        data.setDescription("lorem");
+        data.setExternalid("1");
+        data.setLifeSpan("1 - 2");
+        data.setOrigin("lorem");
+        data.setReferenceImageId("https://api-cat-production.up.railway.app/api/breeds");
+        data.setUuid("131df561d6f5g46s5r");
+        return ResponseEntity.ok(data);
     }
 
 }
